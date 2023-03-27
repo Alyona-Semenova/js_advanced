@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+}
+
+header {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background-color: lightgray;
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+header .cart-button {
+  border: none;
+  border-radius: 6px;
+  height: 34px;
+  width: 90px;
+  margin-right: 20px;
+}
+
+main {
+  margin: 50px 20px;
+}
+main .goods-list {
+  flex-flow: row wrap;
+  height: 80vh;
+  width: 95vw;
+  display: flex;
+  justify-content: space-between;
+}
+main .goods-list .goods-item {
+  height: 300px;
+  width: 220px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+main .goods-list .goods-item > * {
+  color: black;
+  margin: 8px;
+}/*# sourceMappingURL=style.css.map */
