@@ -22,6 +22,8 @@ header {
 
 main {
     margin: 50px 20px;
+    display: flex;
+    justify-content: center;
 
     .goods-list {
         flex-flow: row wrap;
@@ -46,4 +48,63 @@ main {
             }
         }
     }
+
+    .form-container {
+        width: 400px;
+        height: 300px;
+        border: 5px double blue;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        box-sizing: border-box;
+
+        #feedback-form {
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            display: flex;
+
+            input {
+                padding: 0 10px;
+            }
+        }
+
+        .invalid {
+            border: 2px solid darkred;
+        }
+    }
+
+    .form-container {
+        width: 400px;
+        height: 300px;
+        border: 5px double blue;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        box-sizing: border-box;
+
+        #feedback-form {
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            display: flex;
+
+            .form-item {
+                padding: 5px 0;
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+}
+
+.form-btn {
+    height: 34px;
+    background: blue;
+    border-radius: 10px;
+    border: none;
+    align-self: center;
+    width: 150px;
+    margin-top: 12px;
+    color: white;
 }

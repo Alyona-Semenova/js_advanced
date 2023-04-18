@@ -21,6 +21,8 @@ header .cart-button {
 
 main {
   margin: 50px 20px;
+  display: flex;
+  justify-content: center;
 }
 main .goods-list {
   flex-flow: row wrap;
@@ -42,4 +44,56 @@ main .goods-list .goods-item {
 main .goods-list .goods-item > * {
   color: black;
   margin: 8px;
+}
+main .form-container {
+  width: 400px;
+  height: 300px;
+  border: 5px double blue;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  box-sizing: border-box;
+}
+main .form-container #feedback-form {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+main .form-container #feedback-form input {
+  padding: 0 10px;
+}
+main .form-container .invalid {
+  border: 2px solid darkred;
+}
+main .form-container {
+  width: 400px;
+  height: 300px;
+  border: 5px double blue;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  box-sizing: border-box;
+}
+main .form-container #feedback-form {
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+main .form-container #feedback-form .form-item {
+  padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-btn {
+  height: 34px;
+  background: blue;
+  border-radius: 10px;
+  border: none;
+  align-self: center;
+  width: 150px;
+  margin-top: 12px;
+  color: white;
 }/*# sourceMappingURL=style.css.map */
