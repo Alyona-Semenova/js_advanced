@@ -1,42 +1,4 @@
-// const goods = [{
-//         title: "Shirt",
-//         price: 150,
-//     },
-//     {
-//         title: "Socks",
-//         price: 50,
-//     },
-//     {
-//         title: "Jacket",
-//         price: 350,
-//     },
-//     {
-//         title: "Shoes",
-//         price: 250,
-//     },
-// ];
-
-// const $goodsList = document.querySelector('.goods-list');
-
-// const renderGoodsItem = ({
-//     title,
-//     price
-// }) => {
-//     return `<div class="goods-item"><h3>${title}</h3><p>${price}</p></div>`;
-// };
-
-// const renderGoodsList = (list = goods) => {
-//     let goodsList = list.map(
-//         (item) => {
-//             return renderGoodsItem(item);
-//         }
-//     ).join('');
-
-//     $goodsList.insertAdjacentHTML('beforeend', goodsList);
-
-// }
-// renderGoodsList();
-
+const API_URL = "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/";
 /**
  * Класс карточки товара
  * @constructor
@@ -59,13 +21,107 @@ class GoodsItem {
     }
 }
 
+//прототип для построения объектов, самостоятельно не используется
 
-/**
- * Класс корзины товаров / списка товаров
- * @constructor
- */
-class GoodsList {
+class List {
     constructor() {
+        this.list = [];
+    }
+
+    load(list) {
+        this.list = list;
+    }
+    /**
+     * Добавляет товар
+     * @param good товар
+     */
+
+    add(good) {
+        fetch(`${API_URL}addToBasket.json`)
+            .then((res) => {
+                return res.json();
+            })
+            .then((req) => {
+                this.goods = req.map(good => ({
+                    title: good.product_name,
+                    price: good.price
+                }))
+                this.render();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+    }
+
+    /**
+     * Удаляет товар
+     * @param id идентификатор товара
+     */
+    remove(id) {
+
+
+        fetch(`${API_URL}deleteFromBasket.json`)
+            .then((res) => {
+                return res.json();
+            })
+            .then((req) => {
+                this.goods = req.map(good => ({
+                    title: good.product_name,
+                    price: good.price
+                }))
+                this.render();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    render() {
+
+    }
+}
+
+
+class Cart extends List {
+    constructor() {
+        //вызывает метод родителя
+        super()
+    }
+
+    load() {
+        fetch()
+            .then((request) => {
+                return request.json()
+            })
+            .then((data) => {
+                super.load(data)
+            })
+
+
+    }
+
+    getPrice() {
+        let acc = 0;
+
+        for (let good of this.list) {
+            acc += good.price;
+        }
+
+        return acc;
+    }
+
+    render() {
+
+    }
+
+
+}
+
+class GoodsList extends List {
+    constructor() {
+        //вызывает метод родителя
+        super()
         this.goods = [];
     }
 
@@ -73,23 +129,24 @@ class GoodsList {
      * Получает список товаров
      */
     fetchGoods() {
-        this.goods = [{
-                title: 'Short',
-                price: 150
-            },
-            {
-                title: 'Socks',
-                price: 50
-            },
-            {
-                title: 'Jacked',
-                price: 350
-            },
-            {
-                title: 'Shoes',
-                price: 250
-            },
-        ];
+        fetch(`${API_URL}catalogData.json`)
+            .then((res) => {
+                return res.json();
+            })
+            .then((req) => {
+                this.goods = req.map(good => ({
+                    title: good.product_name,
+                    price: good.price
+                }))
+                this.render();
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    filter() {
+
     }
 
     /**
@@ -104,6 +161,7 @@ class GoodsList {
         document.querySelector('.goods-list').innerHTML = listHtml;
     }
 }
+
 
 
 const list = new GoodsList();

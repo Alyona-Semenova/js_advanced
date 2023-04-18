@@ -27,7 +27,7 @@ main .goods-list {
   height: 80vh;
   width: 95vw;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 main .goods-list .goods-item {
   height: 300px;
