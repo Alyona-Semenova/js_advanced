@@ -9,21 +9,11 @@
 <body>
     <div id="app">
         <header>
-            <input type="text" class="goods-search" v-model="searchLine" />
-            <button class="search button" type="button" @click="onSearch">Искать</button>
+          <search @on-search="onSearch"></search>
             <button class="cart-button" type="button" @click="onToggleCart">Корзина</button>
         </header>
         <main>
-            <div class="goods-list">
-                <template v-if="this.filteredGoods.lenght > 0">
-                    <div class="goods-item" v-for="good in filteredGoods" :key="good.id_product">
-                        <h3 @click="addToCart(good)">{{ good.product_name }}</h3>
-                        <p>${{ good.price }}</p>
-                    </div>
-                </template>
-                <template v-else> Список пуст</template>
-
-            </div>
+            <goods-list :goods="this.filteredGoods"></goods-list>
 
 
             <div class="form-container">
@@ -38,32 +28,17 @@
                     <div class="form-item">
                         <label for="message">Текст:</label>
                         <textarea id="message" name="message"></textarea></div>
-
-
-
-
-
-
                     <button class="form-btn" type="submit">Отправить</button>
                 </form>
             </div>
+
+
         </main>
-        <div class="modal" v-if="isVisibleCart">
-            <span class="close" @click="onToggleCart">x</span>
-        </div>
-
-        <div class="goods-list">
-
-            <div class="goods-item" v-for="good in filteredGoods" :key="good.id_product">
-                <h3>{{ good.product_name }}</h3>
-                <p>${{ good.price }}</p>
-                <button @click="removeFromCart">x</button>
-            </div>
-        </div>
+        <cart :is-visible-cart="isVisibleCart" @on-toggle-cart="onToggleCart"></cart>
     </div>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
-        <script src="script.js"></script>
-        <script src="validator-form.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="script.js"></script>
+    <script src="validator-form.js"></script>
 
 </body>
 

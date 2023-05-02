@@ -96,4 +96,22 @@ main .form-container #feedback-form .form-item {
   width: 150px;
   margin-top: 12px;
   color: white;
+}
+
+.modal {
+  width: 600px;
+  height: 400px;
+  position: absolute;
+  top: 100px;
+  border: 1px solid #ccc;
+  background-color: white;
+  border-radius: 4px;
+  left: calc(50% - 300px);
+}
+
+.close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
